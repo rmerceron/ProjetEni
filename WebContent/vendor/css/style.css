@@ -1,0 +1,21 @@
+.tableauxMangas {
+	display: inline-block;
+	vertical-align: top;
+	width: 47%;
+	margin-left: 1.5%;
+}
+
+.titreGaucheTableaux {
+	margin-left: 33%;
+}
+
+.titreDroiteTableaux {
+	margin-left: 33%;
+}
+
+.verticalLine {
+	border-left: 4px solid;
+	height: 100%;
+	margin: 0 20px;
+	color: red
+}

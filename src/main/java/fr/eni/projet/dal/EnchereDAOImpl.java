@@ -62,11 +62,6 @@ public class EnchereDAOImpl implements EnchereDAO {
 	private static final String DELETE_RETRAIT = "DELETE FROM ARTICLES_VENDUS WHERE no_enchere = ?;";
 	
 	
-	
-	
-	
-	
-
 	@Override
 	public List<Utilisateur> selectUtilisateurs() {
 		// TODO Auto-generated method stub

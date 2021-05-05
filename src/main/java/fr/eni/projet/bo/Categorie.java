@@ -1,4 +1,4 @@
-package fr.eni.projet.bo;
+package main.java.fr.eni.projet.bo;
 
 public class Categorie {
 	
@@ -32,7 +32,4 @@ public class Categorie {
 		this.libelle = libelle;
 	}
 	
-	
-	
-
 }

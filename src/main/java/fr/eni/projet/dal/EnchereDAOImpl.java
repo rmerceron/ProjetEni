@@ -1,12 +1,11 @@
-package fr.eni.projet.dal;
+package main.java.fr.eni.projet.dal;
 
 import java.util.List;
 
-import fr.eni.projet.bo.ArticleVendu;
-import fr.eni.projet.bo.Categorie;
-import fr.eni.projet.bo.Enchere;
-import fr.eni.projet.bo.Retrait;
-import fr.eni.projet.bo.Utilisateur;
+import main.java.fr.eni.projet.bo.ArticleVendu;
+import main.java.fr.eni.projet.bo.Enchere;
+import main.java.fr.eni.projet.bo.Retrait;
+import main.java.fr.eni.projet.bo.Utilisateur;
 
 public class EnchereDAOImpl implements EnchereDAO {
 	
@@ -180,18 +179,6 @@ public class EnchereDAOImpl implements EnchereDAO {
 	public void deleteArticleVendu(int idArticleVendu) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public List<Categorie> selectCategories() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Categorie selectCategorie(int idCat) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

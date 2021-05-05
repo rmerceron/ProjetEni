@@ -1,8 +1,8 @@
-package fr.eni.projet.dal;
+package main.java.fr.eni.projet.dal;
 
 import java.util.List;
 
-import fr.eni.projet.bo.*;
+import main.java.fr.eni.projet.bo.*;
 
 
 public interface EnchereDAO {
@@ -55,12 +55,4 @@ public interface EnchereDAO {
 	
 	public void deleteArticleVendu(int idArticleVendu);
 	
-	//Requetes Catégorie
-	
-	public List<Categorie> selectCategories();
-	
-	public Categorie selectCategorie(int idCat);
-	
-	
-
 }

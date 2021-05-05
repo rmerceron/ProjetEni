@@ -1,4 +1,4 @@
-package fr.eni.projet.bo;
+package main.java.fr.eni.projet.bo;
 
 import java.time.LocalDate;
 

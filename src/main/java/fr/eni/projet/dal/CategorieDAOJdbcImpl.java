@@ -1,4 +1,4 @@
-package main.java.fr.eni.projet.dal;
+package fr.eni.projet.dal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.fr.eni.projet.bo.Categorie;
+import fr.eni.projet.bo.Categorie;
 
 public class CategorieDAOJdbcImpl implements CategorieDAO {
 
-	// Permet de sélectionner toutes les catégories de la bdd
+	// Permet de sï¿½lectionner toutes les catï¿½gories de la bdd
 	private static final String SELECT_ALL_CATEGORIES = "SELECT * FROM CATEGORIES";
 	
-	// Permet de récupérer une catégorie en fonction de son ID
+	// Permet de rï¿½cupï¿½rer une catï¿½gorie en fonction de son ID
 	private static final String SELECT_CATEGORIE_ID = "SELECT * FROM CATEGORIES WHERE no_categorie = ?";
 
 	
 	/**
-	 * @return une liste de toutes les catégories 
+	 * @return une liste de toutes les catï¿½gories 
 	 */
 	@Override
 	public List<Categorie> selectAll() 
@@ -44,7 +44,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 
 	
 	/**
-	 * Permet de sélectionner une catégorie en fonction de son ID
+	 * Permet de sï¿½lectionner une catï¿½gorie en fonction de son ID
 	 */
 	@Override
 	public Categorie selectById(int id) 

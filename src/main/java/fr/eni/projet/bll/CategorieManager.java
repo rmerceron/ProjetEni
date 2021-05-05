@@ -1,10 +1,10 @@
-package main.java.fr.eni.projet.bll;
+package fr.eni.projet.bll;
 
 import java.util.List;
 
-import main.java.fr.eni.projet.bo.Categorie;
-import main.java.fr.eni.projet.dal.CategorieDAO;
-import main.java.fr.eni.projet.dal.DAOFactory;
+import fr.eni.projet.bo.Categorie;
+import fr.eni.projet.dal.CategorieDAO;
+import fr.eni.projet.dal.DAOFactory;
 
 public class CategorieManager {
 

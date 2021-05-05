@@ -1,4 +1,4 @@
-package main.java.fr.eni.projet.bo;
+package fr.eni.projet.bo;
 
 public class Utilisateur {
 	

@@ -1,13 +1,13 @@
-package main.java.fr.eni.projet.dal;
+package fr.eni.projet.dal;
 
-import main.java.fr.eni.projet.bo.Categorie;
+import fr.eni.projet.bo.Categorie;
 import java.util.List;
 
 
 public interface CategorieDAO {
 
 	/**
-	 * @return une liste de toutes les catégories
+	 * @return une liste de toutes les catï¿½gories
 	 */
 	public List<Categorie> selectAll();
 	

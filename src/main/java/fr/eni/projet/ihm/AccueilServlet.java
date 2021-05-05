@@ -1,4 +1,4 @@
-package main.java.fr.eni.projet.ihm;
+package fr.eni.projet.ihm;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import main.java.fr.eni.projet.bll.CategorieManager;
+import fr.eni.projet.bll.CategorieManager;
 
 
 @WebServlet("/AccueilServlet")

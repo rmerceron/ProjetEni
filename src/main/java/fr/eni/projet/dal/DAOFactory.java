@@ -1,4 +1,4 @@
-package main.java.fr.eni.projet.dal;
+package fr.eni.projet.dal;
 
 public abstract class DAOFactory {
 	

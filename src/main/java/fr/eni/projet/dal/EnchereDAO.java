@@ -1,8 +1,8 @@
-package main.java.fr.eni.projet.dal;
+package fr.eni.projet.dal;
 
 import java.util.List;
 
-import main.java.fr.eni.projet.bo.*;
+import fr.eni.projet.bo.*;
 
 
 public interface EnchereDAO {

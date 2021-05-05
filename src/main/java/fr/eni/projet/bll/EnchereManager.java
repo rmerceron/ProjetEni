@@ -1,6 +1,7 @@
-package main.java.fr.eni.projet.bll;
+package fr.eni.projet.bll;
 
-import main.java.fr.eni.projet.dal.*;
+import fr.eni.projet.dal.EnchereDAO;
+import fr.eni.projet.dal.*;
 
 public class EnchereManager {
 	

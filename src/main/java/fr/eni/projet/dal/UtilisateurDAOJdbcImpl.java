@@ -10,7 +10,7 @@ import fr.eni.projet.bo.*;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
-	private static final String INSERT_USER = "insert into utilisateur(pseudo, nom, prenom, email, telephone, rue, " +
+	private static final String INSERT_USER = "insert into utilisateurs(pseudo, nom, prenom, email, telephone, rue, " +
 			"code_postal, ville, mot_de_passe, credit, administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
 	
 	private static final String SELECT_USER = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "+
@@ -18,6 +18,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
 	private static final String SELECT_USER_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "+
 			"ville, mot_de_passe, credit, administrateur FROM utilisateurs WHERE no_utilisateur = ?;";
+	
+	private static final String SELECT_USER_PSEUDO = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "+
+			"ville, mot_de_passe, credit, administrateur FROM utilisateurs WHERE pseudo = ?;";
+	
+	private static final String SELECT_USER_MAIL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "+
+			"ville, mot_de_passe, credit, administrateur FROM utilisateurs WHERE email = ?;";
 	
 	private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, " +
 			"code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE no_utilisateur = ?;";
@@ -90,7 +96,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				cnx.rollback();
 				throw e;
 			}
 		} catch (Exception e) {
@@ -148,6 +153,51 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Utilisateur selectByPseudo(String pseudoUser) {
+		Utilisateur utilisateur = new Utilisateur();
+		try(Connection cnx = ConnectionProvider.getConnection())
+		{
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_USER_PSEUDO);
+			pstmt.setString(1, pseudoUser);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) 
+			{
+				utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("pseudo"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			}
+			
+		} 
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return utilisateur;
+	}
+
+	@Override
+	public Utilisateur selectByMail(String mailUser) {
+		Utilisateur utilisateur = new Utilisateur();
+		try(Connection cnx = ConnectionProvider.getConnection())
+		{
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_USER_MAIL);
+			pstmt.setString(1, mailUser);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) 
+			{
+				utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("pseudo"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			}
+			
+		} 
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return utilisateur;
 	}
 
 }

@@ -37,6 +37,24 @@ public class UtilisateurManager {
 	}
 	
 	/**
+	 * @param pseudoUser
+	 * @return Un utilisateur en fonction de son pseudo
+	 */
+	public Utilisateur recupUtilisateurPseudo(String pseudoUser) 
+	{
+		return utilisateurDAO.selectByPseudo(pseudoUser);
+	}
+	
+	/**
+	 * @param mailUser
+	 * @return Un utilisateur en fonction de son mail
+	 */
+	public Utilisateur recupUtilisateurMail(String mailUser) 
+	{
+		return utilisateurDAO.selectByMail(mailUser);
+	}
+	
+	/**
 	 * Ajoute un utilisateur � la bdd
 	 * @param user
 	 */

@@ -18,7 +18,19 @@ public interface UtilisateurDAO {
 	public Utilisateur selectUtilisateur(int idUser);
 	
 	/**
-	 * Permet d'ajouter un utilisateur à la bdd
+	 * @param pseudoUser
+	 * @return Un utilisateur en fonction de son pseudo
+	 */
+	public Utilisateur selectByPseudo(String pseudoUser);
+	
+	/**
+	 * @param mailUser
+	 * @return Un utilisateur en fonction de son mail
+	 */
+	public Utilisateur selectByMail(String mailUser);
+	
+	/**
+	 * Permet d'ajouter un utilisateur ï¿½ la bdd
 	 * @param user
 	 */
 	public void insertUtilisateur(Utilisateur user);

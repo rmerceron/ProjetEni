@@ -1,6 +1,8 @@
 package fr.eni.projet.ihm;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,12 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projet.bll.UtilisateurManager;
+import fr.eni.projet.bo.Utilisateur;
+
 /**
  * Servlet implementation class InscriptionServlet
  */
 @WebServlet("/Inscription")
 public class InscriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int creditIntitial = 100; 
 	private String path = "/WEB-INF/jsp/creationCompte.jsp";
        
     public InscriptionServlet() {
@@ -23,7 +29,7 @@ public class InscriptionServlet extends HttpServlet {
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
-	public void init(ServletConfig config) throws ServletException {
+	public void init() throws ServletException {
 		// TODO Auto-generated method stub
 	}
 
@@ -31,15 +37,23 @@ public class InscriptionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd = request.getRequestDispatcher(path);
+		
+		rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		UtilisateurManager userMana = new UtilisateurManager();
+		Utilisateur mailExist = userMana.recupUtilisateurMail(request.getParameter("email"));
+		Utilisateur pseudoExist = userMana.recupUtilisateurPseudo(request.getParameter("pseudo"));
+		if(pseudoExist.getNoUser() == 0 && mailExist.getNoUser() == 0) {
+			Utilisateur newUser = new Utilisateur(request.getParameter("pseudo"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code_postal"), request.getParameter("ville"), request.getParameter("mdp"), creditIntitial, false);
+			userMana.ajouterUtilisateur(newUser);
+		}
+		
 		doGet(request, response);
 	}
 

@@ -35,6 +35,22 @@ public class Utilisateur {
 		this.credit = credit;
 		this.admin = admin;
 	}
+	
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String code_postal, String ville, String mdp, int credit, boolean admin) {
+		super();
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.mdp = mdp;
+		this.credit = credit;
+		this.admin = admin;
+	}
 
 	public int getNoUser() {
 		return noUser;
@@ -131,9 +147,12 @@ public class Utilisateur {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Utilisateur [noUser=" + noUser + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom=" + prenom
+				+ ", email=" + email + ", telephone=" + telephone + ", rue=" + rue + ", code_postal=" + code_postal
+				+ ", ville=" + ville + ", mdp=" + mdp + ", credit=" + credit + ", admin=" + admin + "]";
+	}
 
 }

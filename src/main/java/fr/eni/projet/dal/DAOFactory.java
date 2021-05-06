@@ -4,7 +4,7 @@ public abstract class DAOFactory {
 	
 	public static EnchereDAO getEnchereDAO()
 	{
-		return new EnchereDAOImpl();
+		return new EnchereDAOJdbcImpl();
 	}
 	
 	public static CategorieDAO getCategorieDAO() 

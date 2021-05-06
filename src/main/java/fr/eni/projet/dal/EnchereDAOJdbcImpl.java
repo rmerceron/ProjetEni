@@ -7,7 +7,7 @@ import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Retrait;
 import fr.eni.projet.bo.Utilisateur;
 
-public class EnchereDAOImpl implements EnchereDAO {
+public class EnchereDAOJdbcImpl implements EnchereDAO {
 	
 	private static final String INSERT_ENCHERE = "INSERT INTO ENCHERES (date_enchere, montant_enchere, no_article, no_utilisateur) " +
 					"VALUES (?,?,?,?);";

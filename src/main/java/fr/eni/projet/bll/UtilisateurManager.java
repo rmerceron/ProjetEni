@@ -20,7 +20,7 @@ public class UtilisateurManager {
 	}
 	
 	/**
-	 * @return Une liste de tous les utilsiateurs
+	 * @return Une liste de tous les utilisateurs
 	 */
 	public List<Utilisateur> recupAllUtilisateurs() 
 	{
@@ -37,7 +37,7 @@ public class UtilisateurManager {
 	}
 	
 	/**
-	 * Ajoute un utilisateur à la bdd
+	 * Ajoute un utilisateur ï¿½ la bdd
 	 * @param user
 	 */
 	public void ajouterUtilisateur(Utilisateur user) 

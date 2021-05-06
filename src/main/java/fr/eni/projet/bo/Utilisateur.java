@@ -11,6 +11,7 @@ public class Utilisateur {
 	private String rue;
 	private String code_postal;
 	private String ville;
+	private String mdp;
 	private int credit;
 	private boolean admin;
 	
@@ -19,7 +20,7 @@ public class Utilisateur {
 	}
 	
 	public Utilisateur(int noUser, String pseudo, String nom, String prenom, String email, String telephone, String rue,
-			String code_postal, String ville, int credit, boolean admin) {
+			String code_postal, String ville, String mdp, int credit, boolean admin) {
 		super();
 		this.noUser = noUser;
 		this.pseudo = pseudo;
@@ -30,6 +31,7 @@ public class Utilisateur {
 		this.rue = rue;
 		this.code_postal = code_postal;
 		this.ville = ville;
+		this.mdp = mdp;
 		this.credit = credit;
 		this.admin = admin;
 	}
@@ -104,6 +106,14 @@ public class Utilisateur {
 
 	public void setVille(String ville) {
 		this.ville = ville;
+	}
+
+	public String getMdp() {
+		return mdp;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
 	}
 
 	public int getCredit() {

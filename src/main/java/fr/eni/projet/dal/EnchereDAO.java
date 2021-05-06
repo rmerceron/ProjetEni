@@ -8,9 +8,6 @@ import fr.eni.projet.bo.*;
 public interface EnchereDAO {
 	
 	
-	/**
-	 * @return Une liste de tous les encheres
-	 */
 	public List<Enchere> selectEncheres();
 	
 	/**

@@ -7,52 +7,35 @@ import fr.eni.projet.bo.*;
 
 public interface EnchereDAO {
 	
-	//Requetes Utilisateur
 	
-	public List<Utilisateur> selectUtilisateurs();
-	
-	public Utilisateur selectUtilisateur(int idUser);
-	
-	public void insertUtilisateur(Utilisateur user);
-	
-	public void updateUtilisateur(Utilisateur user);
-	
-	public void deleteUtilisateur(int idUser);
-	
-	//Requetes Enchere
-	
+	/**
+	 * @return Une liste de tous les encheres
+	 */
 	public List<Enchere> selectEncheres();
 	
+	/**
+	 * @param idEnchere
+	 * @return Un enchere en fonction de son id
+	 */
 	public Enchere selectEnchere(int idEnchere);
 	
+	/**
+	 * Ajoute une enchere
+	 * @param enchere
+	 */
 	public void insertEnchere(Enchere enchere);
 	
+	/**
+	 * Mofidie une enchere
+	 * @param enchere
+	 */
 	public void updateEnchere(Enchere enchere);
 	
+	/**
+	 * Supprimer une enchere
+	 * @param idEnchere
+	 */
 	public void deleteEnchere(int idEnchere);
 	
-	//Requetes Retrait
-	
-	public List<Retrait> selectRetraits();
-	
-	public Retrait selectRetrait(int idRetrait);
-	
-	public void insertRetrait(Retrait retrait);
-	
-	public void updateRetrait(Retrait retrait);
-	
-	public void deleteRetrait(int idRetrait);
-	
-	//Requetes Article
-	
-	public List<ArticleVendu> selectArticleVendus();
-	
-	public ArticleVendu selectArticleVendu(int idArticleVendu);
-	
-	public void insertArticleVendu(ArticleVendu article);
-	
-	public void updateArticleVendu(ArticleVendu article);
-	
-	public void deleteArticleVendu(int idArticleVendu);
 	
 }

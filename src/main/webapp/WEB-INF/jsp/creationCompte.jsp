@@ -1,20 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="/WEB-INF/fragments/upHead.jsp"></jsp:include>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Creation de votre compte</title>
+<jsp:include page="/WEB-INF/fragments/head.jsp" />
 </head>
 <body>
-
-	<jsp:include page="head.jsp">
-		<jsp:param name="title" value="title" />
-	</jsp:include>
-	
-	</form>
-	<jsp:include page="foot.jsp" />
+	<%@include file="/WEB-INF/fragments/navbar.jsp" %>
 
 </body>
+<footer>
+	<jsp:include page="/WEB-INF/fragments/foot.jsp" />
+</footer>
 </html>

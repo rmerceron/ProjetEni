@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="/WEB-INF/fragments/upHead.jsp"></jsp:include>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Connexion</title>
+<jsp:include page="/WEB-INF/fragments/head.jsp"/>
 </head>
 <body>
-	<jsp:include page="head.jsp">
-		<jsp:param name="title" value="Connexion" />
-	</jsp:include>
+	<%@include file="/WEB-INF/fragments/navbar.jsp" %>
+	
+	<div class="titrePage">
+		<br><h2>Connexion</h2><hr>
+	</div>
 	<div class="container" style="max-width: 600px;">
 		<form action="${pageContext.servletContext.contextPath}/connection"
 			method="post">
@@ -35,13 +35,15 @@
 
 				<div class="col">
 					<!-- Simple link -->
-					<a href="#!">Mot de passe oubliÃ©</a>
+					<a href="#!">Mot de passe oublié</a>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary btn-block">Se connecter</button>
 		</form>
-		<br> <a class="btn btn-dark btn-block" href ="${pageContext.servletContext.contextPath}/creationCompte">CrÃ©er un compte</a>
+		<br> <a class="btn btn-dark btn-block" href ="${pageContext.servletContext.contextPath}/creationCompte">Créer un compte</a>
 	</div>
-	<jsp:include page="foot.jsp" />
 </body>
+<footer>
+	<jsp:include page="/WEB-INF/fragments/foot.jsp"/>
+</footer>
 </html>

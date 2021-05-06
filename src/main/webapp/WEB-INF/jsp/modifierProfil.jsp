@@ -1,17 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<jsp:include page="/WEB-INF/fragments/upHead.jsp"></jsp:include>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Modifier votre profil</title>
+<title>Creation de votre compte</title>
+<jsp:include page="/WEB-INF/fragments/head.jsp" />
 </head>
 <body>
+	<%@include file="/WEB-INF/fragments/navbar.jsp" %>
 
-	<jsp:include page="head.jsp">
-		<jsp:param name="title" value="title" />
-	</jsp:include>
-
-	<jsp:include page="foot.jsp" />
 </body>
+<footer>
+	<jsp:include page="/WEB-INF/fragments/foot.jsp" />
+</footer>
 </html>

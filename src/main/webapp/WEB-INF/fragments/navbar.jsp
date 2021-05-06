@@ -5,10 +5,10 @@
 	<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="${pageContext.request.contextPath}/((insert name Servlet)">lien1</a>
+				<a class="nav-link" href="${pageContext.request.contextPath}/(insertNameServlet)">Connexion</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="${pageContext.request.contextPath}/(insertNameServlet)">lien2</a>
+				<a class="nav-link" href="${pageContext.request.contextPath}/Inscription">Inscription</a>
 			</li>
 		</ul>
 	</div>

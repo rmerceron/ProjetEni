@@ -7,17 +7,6 @@ import fr.eni.projet.bo.*;
 
 public interface EnchereDAO {
 	
-	//Requetes Utilisateur
-	
-	public List<Utilisateur> selectUtilisateurs();
-	
-	public Utilisateur selectUtilisateur(int idUser);
-	
-	public void insertUtilisateur(Utilisateur user);
-	
-	public void updateUtilisateur(Utilisateur user);
-	
-	public void deleteUtilisateur(int idUser);
 	
 	//Requetes Enchere
 	

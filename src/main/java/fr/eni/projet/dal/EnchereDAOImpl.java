@@ -11,9 +11,6 @@ public class EnchereDAOImpl implements EnchereDAO {
 	
 	//Requete Insert
 	
-	private static final String INSERT_USER = "insert into utilisateur(pseudo, nom, prenom, email, telephone, rue, " +
-					"code_postal, ville, mot_de_passe, credit, administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
-	
 	private static final String INSERT_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?,?,?,?);";
 	
 	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, " +
@@ -24,11 +21,6 @@ public class EnchereDAOImpl implements EnchereDAO {
 	
 	//Requete Select
 	
-	private static final String SELECT_USER = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "+
-					"ville, mot_de_passe, credit, administrateur FROM utilisateurs;";
-	
-	private static final String SELECT_CATEGORIE = "SELECT no_categorie, libelle FROM categories;";
-	
 	private static final String SELECT_ARTICLE = "SELECT no_article, nom_article, description, date_debut_encheres, "+
 					"date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM articles_vendus;";
 	
@@ -37,9 +29,6 @@ public class EnchereDAOImpl implements EnchereDAO {
 	private static final String SELECT_RETRAIT = "SELECT no_article, rue, code_postal, ville FROM retraits;";
 	
 	//Requete Update
-	
-	private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, " +
-					"code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ? WHERE no_utilisateur = ?;";
 	
 	private static final String UPDATE_ENCHERE = "UPDATE ENCHERES SET date_enchere = ?, montant_enchere = ?, no_article = ?, no_utilisateur = ? " + 
 					"WHERE no_enchere = ?;";
@@ -61,36 +50,6 @@ public class EnchereDAOImpl implements EnchereDAO {
 	private static final String DELETE_RETRAIT = "DELETE FROM ARTICLES_VENDUS WHERE no_enchere = ?;";
 	
 	
-	@Override
-	public List<Utilisateur> selectUtilisateurs() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Utilisateur selectUtilisateur(int idUser) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void insertUtilisateur(Utilisateur user) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateUtilisateur(Utilisateur user) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteUtilisateur(int idUser) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public List<Enchere> selectEncheres() {
 		// TODO Auto-generated method stub

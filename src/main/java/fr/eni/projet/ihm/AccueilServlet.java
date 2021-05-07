@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projet.bll.ArticleManager;
 import fr.eni.projet.bll.CategorieManager;
 
 
@@ -28,14 +29,18 @@ public class AccueilServlet extends HttpServlet {
     @Override
 	public void init() throws ServletException 
     {
-    	ServletContext sc = getServletContext();
-    	CategorieManager categorieManager = new CategorieManager();
-    	sc.setAttribute("listeCategorie", categorieManager.recupAllCategorie());
+
 	}
 
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher(path);
+		
+    	ServletContext sc = getServletContext();
+    	CategorieManager categorieManager = new CategorieManager();
+    	ArticleManager articleManager = new ArticleManager();
+    	sc.setAttribute("listeArticleVendu", articleManager.recupAllArticleVendus());
+    	sc.setAttribute("listeCategorie", categorieManager.recupAllCategorie());
 		
 		rd.forward(request, response);
 	}

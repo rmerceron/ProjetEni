@@ -4,10 +4,18 @@ import java.util.List;
 
 import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.dal.ArticleDAO;
+import fr.eni.projet.dal.DAOFactory;
 
 public class ArticleManager {
 
 	private ArticleDAO articleDAO;
+	
+	
+	public ArticleManager() 
+	{
+		this.articleDAO = DAOFactory.getArticleDAO();
+	}
+	
 	
 	/**
 	 * @return Une liste de tous les articles de la bdd
@@ -17,6 +25,7 @@ public class ArticleManager {
 		return articleDAO.selectArticleVendus();
 	}
 
+	
 	/**
 	 * @param idArticleVendu
 	 * @return Un article de la bdd
@@ -26,6 +35,7 @@ public class ArticleManager {
 		return articleDAO.selectArticleVendu(idArticleVendu);
 	}
 
+	
 	/**
 	 * Ajoute un article à la bdd
 	 * @param article

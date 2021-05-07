@@ -1,14 +1,15 @@
 package fr.eni.projet.bo;
 
-import java.time.LocalDate;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class ArticleVendu {
 	
 	private int noArticle;
 	private String nom;
 	private String description;
-	private LocalDate dateDebut;
-	private LocalDate dateFin;
+	private Date dateDebut;
+	private Date dateFin;
 	private int prixInitial;
 	private int prixVente;
 	private Categorie laCategorie;
@@ -18,7 +19,7 @@ public class ArticleVendu {
 
 	}
 
-	public ArticleVendu(int noArticle, String nom, String description, LocalDate dateDebut, LocalDate dateFin,
+	public ArticleVendu(int noArticle, String nom, String description, Date dateDebut, Date dateFin,
 			int prixInitial, int prixVente, Categorie laCategorie, Utilisateur acheteur) {
 		super();
 		this.noArticle = noArticle;
@@ -30,6 +31,16 @@ public class ArticleVendu {
 		this.prixVente = prixVente;
 		this.laCategorie = laCategorie;
 		this.acheteur = acheteur;
+	}
+	
+	public ArticleVendu(int noArticle, String nom, String description, Date dateDebut, Date dateFin, int prixInitial, int prixVente) {
+		this.noArticle = noArticle;
+		this.nom = nom;
+		this.description = description;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.prixInitial = prixInitial;
+		this.prixVente = prixVente;
 	}
 
 	public int getNoArticle() {
@@ -56,19 +67,19 @@ public class ArticleVendu {
 		this.description = description;
 	}
 
-	public LocalDate getDateDebut() {
+	public Date getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateDebut(LocalDate dateDebut) {
+	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public LocalDate getDateFin() {
+	public Date getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(LocalDate dateFin) {
+	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
 
@@ -102,6 +113,11 @@ public class ArticleVendu {
 
 	public void setAcheteur(Utilisateur acheteur) {
 		this.acheteur = acheteur;
+	}
+	
+	public String getDateFinEncheresFmt() {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return simpleDateFormat.format(this.dateFin);
 	}
 	
 	

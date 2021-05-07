@@ -13,7 +13,7 @@
 		<br><h2>Connexion</h2><hr>
 	</div>
 	<div class="container" style="max-width: 600px;">
-		<form action="${pageContext.servletContext.contextPath}/connection"
+		<form action="${pageContext.servletContext.contextPath}/connexion"
 			method="post">
 			<div class="form-outline mb-4">
 				<input required type="text" name="identifiant" id="identifiant" class="form-control" value="${ identifiant }" /> <label
@@ -35,12 +35,12 @@
 
 				<div class="col">
 					<!-- Simple link -->
-					<a href="#!">Mot de passe oublié</a>
+					<a href="#!">Mot de passe oubliï¿½</a>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary btn-block">Se connecter</button>
 		</form>
-		<br> <a class="btn btn-dark btn-block" href ="${pageContext.servletContext.contextPath}/creationCompte">Créer un compte</a>
+		<br> <a class="btn btn-dark btn-block" href ="${pageContext.servletContext.contextPath}/creationCompte">Crï¿½er un compte</a>
 	</div>
 </body>
 <footer>

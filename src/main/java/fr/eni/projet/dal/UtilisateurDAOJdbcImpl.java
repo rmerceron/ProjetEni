@@ -16,6 +16,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_USER = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "+
 			"ville, mot_de_passe, credit, administrateur FROM utilisateurs;";
 	
+	private static final String SELECT_CONNEXION = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "+
+			"ville, mot_de_passe, credit, administrateur FROM utilisateurs WHERE (pseudo = ? OR email = ?) AND mot_de_passe = ?";
+	
 	private static final String SELECT_USER_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, "+
 			"ville, mot_de_passe, credit, administrateur FROM utilisateurs WHERE no_utilisateur = ?;";
 	
@@ -200,4 +203,22 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		return utilisateur;
 	}
 
+	@Override
+	public Utilisateur seConnecter(String login, String password) throws DALException {
+		Utilisateur user = null;
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement selectConnexion = cnx.prepareStatement(SELECT_CONNEXION);
+			selectConnexion.setString(1, login);
+			selectConnexion.setString(2, login);
+			selectConnexion.setString(3, password);
+			ResultSet rs = selectConnexion.executeQuery();
+			if(rs.next()) 
+			{
+				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("pseudo"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
 }

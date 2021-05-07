@@ -2,7 +2,9 @@ package fr.eni.projet.bll;
 
 import java.util.List;
 
+import fr.eni.projet.bo.BusinessException;
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.dal.DALException;
 import fr.eni.projet.dal.DAOFactory;
 import fr.eni.projet.dal.UtilisateurDAO;
 
@@ -80,5 +82,25 @@ public class UtilisateurManager {
 	{
 		utilisateurDAO.deleteUtilisateur(idUser);
 	}
+	
+	/**
+	 * @param pseudo
+	 * @param password
+	 * @return
+	 * @throws BusinessException
+	 */
+	public Utilisateur seConnecter(String pseudo, String password) throws BusinessException {
+        Utilisateur utilisateurBase = null;
 
+        try {
+            utilisateurBase = this.utilisateurDAO.seConnecter(pseudo, password);
+            if (utilisateurBase == null) {
+                throw new BusinessException();
+            }
+        } catch (DALException e) {
+            e.printStackTrace();
+        }
+
+        return utilisateurBase;
+    }
 }

@@ -46,4 +46,12 @@ public interface UtilisateurDAO {
 	 * @param idUser
 	 */
 	public void deleteUtilisateur(int idUser);
+	
+	/**
+	 * @param var1
+	 * @param var2
+	 * @return
+	 * @throws DALException
+	 */
+	Utilisateur seConnecter(String pseudo, String password) throws DALException;
 }

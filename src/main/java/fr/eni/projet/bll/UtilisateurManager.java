@@ -60,18 +60,18 @@ public class UtilisateurManager {
 	 * Ajoute un utilisateur � la bdd
 	 * @param user
 	 */
-	public void ajouterUtilisateur(Utilisateur user) 
+	public Utilisateur ajouterUtilisateur(Utilisateur user) 
 	{
-		utilisateurDAO.insertUtilisateur(user);
+		return utilisateurDAO.insertUtilisateur(user);
 	}
 	
 	/**
 	 * Modifie un utilisateur de la bdd
 	 * @param user
 	 */
-	public void modifierUtilisateur(Utilisateur user) 
+	public Utilisateur modifierUtilisateur(Utilisateur user) 
 	{
-		utilisateurDAO.updateUtilisateur(user);
+		return utilisateurDAO.updateUtilisateur(user);
 	}
 	
 	/**

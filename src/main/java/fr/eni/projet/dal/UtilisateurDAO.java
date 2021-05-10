@@ -33,13 +33,13 @@ public interface UtilisateurDAO {
 	 * Permet d'ajouter un utilisateur � la bdd
 	 * @param user
 	 */
-	public void insertUtilisateur(Utilisateur user);
+	public Utilisateur insertUtilisateur(Utilisateur user);
 	
 	/**
 	 * Permet de mettre un jour un utilisateur de la bdd
 	 * @param user
 	 */
-	public void updateUtilisateur(Utilisateur user);
+	public Utilisateur updateUtilisateur(Utilisateur user);
 	
 	/**
 	 * Permet de supprimer un utilisateur de la bdd

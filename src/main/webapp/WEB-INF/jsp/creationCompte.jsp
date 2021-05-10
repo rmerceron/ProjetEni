@@ -10,8 +10,8 @@
 	<%@include file="/WEB-INF/fragments/navbar.jsp" %>
 	
 	<div class="container">
-	<h2>Inscription a ENI-Enchere</h2>
-	<hr>
+		<h2>Inscription a ENI-Enchere</h2>
+		<hr>
 		<form action="${pageContext.request.contextPath}/Inscription" method="post">
 			<div class="form-group">
 				<label for="pseudo">Pseudo</label>

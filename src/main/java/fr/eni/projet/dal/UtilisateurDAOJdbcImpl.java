@@ -42,7 +42,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) 
 			{
-				listeUsers.add(new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("pseudo"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur")));
+				listeUsers.add(new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur")));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,7 +61,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			
 			if(rs.next()) 
 			{
-				utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("pseudo"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+				utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
 			}
 			
 		} 
@@ -74,7 +74,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public void insertUtilisateur(Utilisateur user) {
+	public Utilisateur insertUtilisateur(Utilisateur user) {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			try {
 				PreparedStatement pstmt = cnx.prepareStatement(INSERT_USER, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -104,10 +104,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return user;
 	}
 
 	@Override
-	public void updateUtilisateur(Utilisateur user) {
+	public Utilisateur updateUtilisateur(Utilisateur user) {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			try {
 				PreparedStatement pstmt = cnx.prepareStatement(UPDATE_USER);
@@ -135,6 +136,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return user;
 	}
 
 	@Override
@@ -214,7 +216,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			ResultSet rs = selectConnexion.executeQuery();
 			if(rs.next()) 
 			{
-				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("pseudo"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+				user = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"), rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

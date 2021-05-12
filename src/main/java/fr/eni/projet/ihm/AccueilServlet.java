@@ -19,6 +19,7 @@ public class AccueilServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private String path = "/WEB-INF/jsp/accueil.jsp";
+	private String categorie = null;
 
   
     public AccueilServlet() {
@@ -41,13 +42,15 @@ public class AccueilServlet extends HttpServlet {
     	ArticleManager articleManager = new ArticleManager();
     	sc.setAttribute("listeArticleVendu", articleManager.recupAllArticleVendus());
     	sc.setAttribute("listeCategorie", categorieManager.recupAllCategorie());
-		
+    	
 		rd.forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher(path);
+		categorie = request.getParameter("categorieSelect");
+		rd.forward(request, response);
 	}
 
 }

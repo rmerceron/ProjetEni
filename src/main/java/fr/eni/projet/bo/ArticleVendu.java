@@ -15,10 +15,7 @@ public class ArticleVendu {
 	private Categorie laCategorie;
 	private Utilisateur acheteur;
 	
-	public ArticleVendu() {
-
-	}
-
+	
 	public ArticleVendu(int noArticle, String nom, String description, Date dateDebut, Date dateFin,
 			int prixInitial, int prixVente, Categorie laCategorie, Utilisateur acheteur) {
 		super();
@@ -41,6 +38,20 @@ public class ArticleVendu {
 		this.dateFin = dateFin;
 		this.prixInitial = prixInitial;
 		this.prixVente = prixVente;
+	}
+	
+	public ArticleVendu(String nom, String description, Categorie categorie, Date dateDebut, Date dateFin ) 
+	{
+		this.nom = nom;
+		this.description = description;
+		this.laCategorie = categorie;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+	}
+
+	public ArticleVendu() 
+	{
+		
 	}
 
 	public int getNoArticle() {

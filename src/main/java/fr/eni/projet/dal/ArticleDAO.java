@@ -1,5 +1,6 @@
 package fr.eni.projet.dal;
 
+import java.sql.Connection;
 import java.util.List;
 
 import fr.eni.projet.bo.ArticleVendu;
@@ -36,4 +37,11 @@ public interface ArticleDAO {
 	 * @param idArticleVendu
 	 */
 	public void deleteArticleVendu(int idArticleVendu);
+	
+	/**
+	 * Insert un article avec un retrait
+	 * @param cnx
+	 * @param article
+	 */
+	public void insertArticle(Connection cnx, ArticleVendu article);
 }

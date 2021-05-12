@@ -1,7 +1,11 @@
 package fr.eni.projet.dal;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
+import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Retrait;
 
 public class RetraitDAOJdbcImpl implements RetraitDAO{
@@ -16,27 +20,59 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 
 	
 	@Override
-	public List<Retrait> selectRetraits() {
+	public List<Retrait> selectRetraits() 
+	{
 		return null;
 	}
 
 	@Override
-	public Retrait selectRetrait(int idRetrait) {
+	public Retrait selectRetrait(int idRetrait) 
+	{
 		return null;
 	}
 
 	@Override
-	public void insertRetrait(Retrait retrait) {
+	public void insertRetrait(Retrait retrait) 
+	{
+		try(Connection cnx = ConnectionProvider.getConnection())
+		{
+			insertRetrait(cnx, retrait);
+		} 
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void insertRetrait(Connection cnx, Retrait retrait) 
+	{
+		try 
+		{
+			PreparedStatement pstmt = cnx.prepareStatement(INSERT_RETRAIT);
+			pstmt.setInt(1, retrait.getNoArticle());
+			pstmt.setString(2, retrait.getRue());
+			pstmt.setString(3, retrait.getCodePostal());
+			pstmt.setString(4, retrait.getVille());
+			
+			pstmt.executeUpdate();
+
+		} 
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void updateRetrait(Retrait retrait) 
+	{
 		
 	}
 
 	@Override
-	public void updateRetrait(Retrait retrait) {
-		
-	}
-
-	@Override
-	public void deleteRetrait(int idRetrait) {
+	public void deleteRetrait(int idRetrait) 
+	{
 		
 	}
 

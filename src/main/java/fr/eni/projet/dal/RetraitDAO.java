@@ -1,5 +1,6 @@
 package fr.eni.projet.dal;
 
+import java.sql.Connection;
 import java.util.List;
 
 import fr.eni.projet.bo.Retrait;
@@ -20,6 +21,12 @@ public interface RetraitDAO {
 	
 	/**
 	 *  Permet d'insérer un retrait
+	 * @param retrait
+	 */
+	public void insertRetrait(Connection cnx, Retrait retrait);
+	
+	/**
+	 * Insert un retrait
 	 * @param retrait
 	 */
 	public void insertRetrait(Retrait retrait);

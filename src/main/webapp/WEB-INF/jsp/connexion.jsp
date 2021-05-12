@@ -35,12 +35,12 @@
 
 				<div class="col">
 					<!-- Simple link -->
-					<a href="#!">Mot de passe oubli�</a>
+					<a href="#!">Mot de passe oublie</a>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary btn-block">Se connecter</button>
 		</form>
-		<br> <a class="btn btn-dark btn-block" href ="${pageContext.servletContext.contextPath}/creationCompte">Cr�er un compte</a>
+		<br> <a class="btn btn-dark btn-block" href ="${pageContext.servletContext.contextPath}/creationCompte">Creer un compte</a>
 	</div>
 </body>
 <footer>

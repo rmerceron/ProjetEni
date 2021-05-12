@@ -78,21 +78,40 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	{
 		try(Connection cnx = ConnectionProvider.getConnection())
 		{
-			PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE);
+			insertArticle(cnx, article);
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void insertArticle(Connection cnx, ArticleVendu article) 
+	{
+		try
+		{
+			PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, article.getNom());
 			pstmt.setString(2, article.getDescription());
 			pstmt.setTimestamp(3, new Timestamp(article.getDateDebut().getTime()));
 			pstmt.setTimestamp(4, new Timestamp(article.getDateFin().getTime()));
 			pstmt.setInt(5, article.getPrixInitial());
 			pstmt.setInt(6, article.getPrixVente());
-			pstmt.setInt(7, article.getLaCategorie().getNoCategorie());
-			pstmt.setInt(8, article.getAcheteur().getNoUser());
+			pstmt.setInt(7, article.getAcheteur().getNoUser());
+			pstmt.setInt(8, article.getLaCategorie().getNoCategorie());
 			
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			
+			if(rs.next())
+			{
+				article.setNoArticle(rs.getInt(1));
+			}
+				
 			rs.close();
 			pstmt.close();
+
 		}
 		catch(Exception e) 
 		{

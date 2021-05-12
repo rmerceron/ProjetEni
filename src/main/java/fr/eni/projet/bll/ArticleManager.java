@@ -1,10 +1,14 @@
 package fr.eni.projet.bll;
 
+import java.sql.Connection;
 import java.util.List;
 
 import fr.eni.projet.bo.ArticleVendu;
+import fr.eni.projet.bo.Retrait;
 import fr.eni.projet.dal.ArticleDAO;
+import fr.eni.projet.dal.ConnectionProvider;
 import fr.eni.projet.dal.DAOFactory;
+import fr.eni.projet.dal.RetraitDAO;
 
 public class ArticleManager {
 
@@ -62,5 +66,30 @@ public class ArticleManager {
 	{
 		articleDAO.deleteArticleVendu(idArticleVendu);
 	}
-
+	
+	/**
+	 * Ajoute un article depuis la jsp NouvelleVente
+	 * @param article
+	 * @param retrait
+	 */
+	public void ajouterArticle(ArticleVendu article, Retrait retrait) 
+	{
+		try(Connection cnx = ConnectionProvider.getConnection())
+		{
+			cnx.setAutoCommit(false);
+			articleDAO.insertArticle(cnx, article);
+			System.out.println(article.getNoArticle());
+			retrait.setNoArticle(article.getNoArticle());
+			
+			RetraitDAO retraitDAO;
+			retraitDAO = DAOFactory.getRetraitDAO();
+			retraitDAO.insertRetrait(cnx, retrait);
+			cnx.commit();
+			
+		} 
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
 }

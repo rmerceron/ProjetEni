@@ -68,11 +68,14 @@ public class CompteServlet extends HttpServlet {
 		
 		if((pseudoExist.getNoUser() == 0 || pseudoExist.getNoUser() == idUser) && (mailExist.getNoUser() == 0|| mailExist.getNoUser() == idUser)) {
 			System.out.println("j'y arrive");
-			Utilisateur newUser = new Utilisateur(request.getParameter("pseudo"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code_postal"), request.getParameter("ville"), request.getParameter("mdp"), oldUser.getCredit(), oldUser.isAdmin());
+			Utilisateur newUser = new Utilisateur(oldUser.getNoUser(), request.getParameter("pseudo"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("email"), request.getParameter("telephone"), request.getParameter("rue"), request.getParameter("code_postal"), request.getParameter("ville"), request.getParameter("mdp"), oldUser.getCredit(), oldUser.isAdmin());
+			System.out.println(newUser.toString());
 			newUser = userMana.modifierUtilisateur(newUser);
+			System.out.println(newUser.toString());
 			try {
 				newUser = userMana.seConnecter(newUser.getPseudo(), newUser.getMdp());
 				HttpSession session = request.getSession(true);
+				session.removeAttribute("user");
 				session.setAttribute("user", (Utilisateur) userMana.recupUtilisateur(newUser.getNoUser()));
 				response.sendRedirect(request.getContextPath() + "/");
 				

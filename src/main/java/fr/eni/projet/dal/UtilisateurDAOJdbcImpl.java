@@ -109,8 +109,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	@Override
 	public Utilisateur updateUtilisateur(Utilisateur user) {
+		System.out.println(user.isAdmin());
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			try {
+				System.out.println("je rentre");
 				PreparedStatement pstmt = cnx.prepareStatement(UPDATE_USER);
 				pstmt.setString(1, user.getPseudo());
 				pstmt.setString(2, user.getNom());

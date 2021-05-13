@@ -44,4 +44,15 @@ public interface ArticleDAO {
 	 * @param article
 	 */
 	public void insertArticle(Connection cnx, ArticleVendu article);
+	
+	/**
+	 * @return une liste en fonction de la categorie et du nom
+	 */
+	public List<ArticleVendu> selectArticleVenduByCategorieEtNomArticle(String nomArticle, int noCategorie);
+
+	/**
+	 * @param noCategorie
+	 * @return une liste en fonction de la catégorie
+	 */
+	public List<ArticleVendu> selectArticleVenduByCategorie(int noCategorie);
 }

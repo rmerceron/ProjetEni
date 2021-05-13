@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import fr.eni.projet.bo.ArticleVendu;
+import fr.eni.projet.bo.Utilisateur;
 
 public class ArticleDAOJdbcImpl implements ArticleDAO {
 	
@@ -26,6 +27,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			"no_utilisateur = ?, no_categorie = ? WHERE no_article = ?;";
 	
 	private static final String DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_enchere = ?;";
+	
+	private static final String SELECT_ENCHERE_CATE_NOM = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ? AND nom_article LIKE ? and date_debut_encheres < ? AND date_fin_encheres > ? ";
+	
+	private static final String SELECT_ENCHERE_CATE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ? AND date_debut_encheres  < ? and date_fin_encheres > ?";
 
 
 	@Override
@@ -160,6 +165,71 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		{
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<ArticleVendu> selectArticleVenduByCategorieEtNomArticle(String nomArticle, int noCategorie) 
+	{
+		List<ArticleVendu> listeArticle = new ArrayList<ArticleVendu>();
+		Timestamp dateActuelle = new Timestamp(System.currentTimeMillis());
+		ArticleVendu article = new ArticleVendu();
+		UtilisateurDAOJdbcImpl utilisateur = new UtilisateurDAOJdbcImpl();
+		
+		try(Connection cnx = ConnectionProvider.getConnection()) 
+		{
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_ENCHERE_CATE_NOM);
+			pstmt.setInt(1, noCategorie);
+			pstmt.setString(2, "%" + nomArticle + "%");
+			pstmt.setTimestamp(3, dateActuelle);
+			pstmt.setTimestamp(4, dateActuelle);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) 
+			{
+				article = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),rs.getString("description"), new Date(rs.getTimestamp("date_debut_encheres").getTime()), new Date(rs.getTimestamp("date_fin_encheres").getTime()), rs.getInt("prix_initial"), rs.getInt("prix_vente"));
+				article.setAcheteur(utilisateur.selectUtilisateur(rs.getInt("no_utilisateur")));
+				listeArticle.add(article);
+			}
+		} 
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return listeArticle;
+	}
+
+	@Override
+	public List<ArticleVendu> selectArticleVenduByCategorie(int noCategorie) 
+	{
+		List<ArticleVendu> listeArticle = new ArrayList<ArticleVendu>();
+		Timestamp dateActuelle = new Timestamp(System.currentTimeMillis());
+		ArticleVendu article = new ArticleVendu();
+		UtilisateurDAOJdbcImpl utilisateur = new UtilisateurDAOJdbcImpl();
+		
+		try(Connection cnx = ConnectionProvider.getConnection()) 
+		{
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_ENCHERE_CATE);
+			pstmt.setInt(1, noCategorie);
+			pstmt.setTimestamp(2, dateActuelle);
+			pstmt.setTimestamp(3, dateActuelle);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) 
+			{
+				article = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),rs.getString("description"), new Date(rs.getTimestamp("date_debut_encheres").getTime()), new Date(rs.getTimestamp("date_fin_encheres").getTime()), rs.getInt("prix_initial"), rs.getInt("prix_vente"));
+				article.setAcheteur(utilisateur.selectUtilisateur(rs.getInt("no_utilisateur")));
+				listeArticle.add(article);
+			}
+		} 
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return listeArticle;
 	}
 
 }

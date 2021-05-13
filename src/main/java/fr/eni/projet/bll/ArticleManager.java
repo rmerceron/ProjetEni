@@ -28,6 +28,21 @@ public class ArticleManager {
 	{
 		return articleDAO.selectArticleVendus();
 	}
+	
+	/**
+	 * @param nomArticle
+	 * @param numCategorie
+	 * @return une liste en fonction du nom de l'article ainsi que du numéro de la catégorie
+	 */
+	public List<ArticleVendu> recupArticleByCateAndNom(String nomArticle, int numCategorie)
+	{
+		return articleDAO.selectArticleVenduByCategorieEtNomArticle(nomArticle, numCategorie);
+	}
+	
+	public List<ArticleVendu> recupArticleByCate(int numCategorie)
+	{
+		return articleDAO.selectArticleVenduByCategorie(numCategorie);
+	}
 
 	
 	/**
@@ -92,4 +107,5 @@ public class ArticleManager {
 			e.printStackTrace();
 		}
 	}
+	
 }

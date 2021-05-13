@@ -20,7 +20,7 @@
 			<form name="filtre" action="AccueilServlet" method="POST">
 				<h6>Filtres :</h6>
 				<div class="form-group">
-					<input id="search-focus" type="search" class="form-control" placeholder="Rechercher un article" />
+					<input id="search-focus" type="search" class="form-control" name="recherche" id="recherche" placeholder="Rechercher un article" />
 		 		</div>
 				<h6>Catégorie</h6>
 				<div class="form-group">
@@ -40,22 +40,28 @@
 	
 	<div>
 		<c:if test="${user.noUser != null}">
-			<c:forEach var="article" items="${listeArticleVendu}">
+			<c:forEach var="article" items="${listeArticleVendus}">
 				<div class="card d-inline-flex justify-content-evenly">
 					<div class="card-body">
 						<div>Article : ${article.nom}</div>
 						<div>Prix Initial : ${article.prixInitial}</div>
 						<div>Fin d'enchere : ${article.dateFinEncheresFmt}</div>
 						<div>${article.acheteur.pseudo}</div>
-						<c:forEach var="categorie" items="${categorieSelect}">
-							<div>${categorie}</div>
-						</c:forEach>
 					</div>
 				</div>
 			</c:forEach>
 		</c:if>
-		<c:if test="${user.noUser == null }">
-		
+		<c:if test="${user.noUser == null}">
+			<c:forEach var="article" items="${listeArticleVendus}">
+				<div class="card d-inline-flex justify-content-evenly">
+					<div class="card-body">
+						<div>Article : ${article.nom}</div>
+						<div>Prix Initial : ${article.prixInitial}</div>
+						<div>Fin d'enchere : ${article.dateFinEncheresFmt}</div>
+						<div>Vendeur : ${article.acheteur.pseudo}</div>
+					</div>
+				</div>
+			</c:forEach>
 		</c:if>
 	</div>
 	

@@ -43,7 +43,7 @@
 			<c:forEach var="article" items="${listeArticleVendus}">
 				<div class="card d-inline-flex justify-content-evenly">
 					<div class="card-body">
-						<div>Article : ${article.nom}</div>
+						<div><a href="/ProjetEni/detailVente?id_enchere=${article.noArticle}">Article : ${article.nom}</a></div>
 						<div>Prix Initial : ${article.prixInitial}</div>
 						<div>Fin d'enchere : ${article.dateFinEncheresFmt}</div>
 						<div>${article.acheteur.pseudo}</div>
@@ -55,7 +55,7 @@
 			<c:forEach var="article" items="${listeArticleVendus}">
 				<div class="card d-inline-flex justify-content-evenly">
 					<div class="card-body">
-						<div>Article : ${article.nom}</div>
+						<div><a href="/ProjetEni/detailVente?id_enchere=${article.noArticle}">Article : ${article.nom}</a></div>
 						<div>Prix Initial : ${article.prixInitial}</div>
 						<div>Fin d'enchere : ${article.dateFinEncheresFmt}</div>
 						<div>Vendeur : ${article.acheteur.pseudo}</div>
@@ -66,5 +66,7 @@
 	</div>
 	
 </body>
-
+<footer>
+	<jsp:include page="/WEB-INF/fragments/foot.jsp" />
+</footer>
 </html>

@@ -13,8 +13,9 @@ public interface EnchereDAO {
 	/**
 	 * @param idEnchere
 	 * @return Un enchere en fonction de son id
+	 * @throws DALException 
 	 */
-	public Enchere selectEnchere(int idEnchere);
+	public Enchere selectEnchere(int idEnchere) throws DALException;
 	
 	/**
 	 * Ajoute une enchere
@@ -34,5 +35,12 @@ public interface EnchereDAO {
 	 */
 	public void deleteEnchere(int idEnchere);
 	
+	/**
+	 * 
+	 * @param id_enchere
+	 * @throws DALException 
+	 */
+	public Enchere getEnchereInnerJoin(Integer id_enchere) throws DALException;
 	
+	public void encherir(Integer idEnchere, Integer prix, Integer last) throws DALException;
 }

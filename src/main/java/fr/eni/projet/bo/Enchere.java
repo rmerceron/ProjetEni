@@ -1,20 +1,22 @@
 package fr.eni.projet.bo;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Enchere {
 	
 	private int noEnchere;
-	private LocalDate dateEnchere;
+	private Date dateEnchere;
 	private int montant;
 	private ArticleVendu article;
 	private Utilisateur user;
+	private Retrait retrait;
+	private Utilisateur dernierEncherisseur;
 	
 	public Enchere() {
 
 	}
 	
-	public Enchere(int noEnchere, LocalDate dateEnchere, int montant, ArticleVendu article, Utilisateur user) {
+	public Enchere(int noEnchere, Date dateEnchere, int montant, ArticleVendu article, Utilisateur user) {
 		super();
 		this.noEnchere = noEnchere;
 		this.dateEnchere = dateEnchere;
@@ -31,12 +33,12 @@ public class Enchere {
 		this.noEnchere = noEnchere;
 	}
 
-	public LocalDate getDateEnchere() {
+	public Date getDateEnchere() {
 		return dateEnchere;
 	}
 
-	public void setDateEnchere(LocalDate dateEnchere) {
-		this.dateEnchere = dateEnchere;
+	public void setDateEnchere(Date date) {
+		this.dateEnchere = date;
 	}
 
 	public int getMontant() {
@@ -63,6 +65,20 @@ public class Enchere {
 		this.user = user;
 	}
 	
-		
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+	}
+
+	public Utilisateur getDernierEncherisseur() {
+		return dernierEncherisseur;
+	}
+
+	public void setDernierEncherisseur(Utilisateur dernierEncherisseur) {
+		this.dernierEncherisseur = dernierEncherisseur;
+	}
 
 }
